@@ -1,110 +1,77 @@
-# CA1 Neuronal Subtype Mapping to Allen Brain Atlas
+# CA1 Subtype Analysis Code Repository
 
-This repository contains the computational pipeline used to project *in vivo* transcriptomic signatures of CA1 pyramidal neuron subpopulations (Type A and Type B) onto the Allen Institute Smart-seq reference atlas.
-
-This analysis accompanies the manuscript:
-**[Add your paper title here]**
+This repository contains analysis pipelines for studying CA1 neuronal subtypes across multiple experimental modalities, including electrophysiology, transcriptomics, and behaviour.
 
 ---
 
-## 🔬 Overview
+## Repository Structure
 
-To validate the existence of CA1 neuronal subpopulations across independent datasets, this pipeline maps differentially expressed gene (DEG) signatures onto the Allen Brain Institute Smart-seq dataset.
+### 1. Electrophysiology/
 
-The workflow includes:
-- Reference dataset preprocessing (Smart-seq hippocampus)
-- DEG signature extraction from bulk RNA-seq (DESeq2)
-- Gene module scoring using Scanpy
-- Strict subtype classification using percentile thresholds
-- Visualization via publication-ready dot plots
+This folder contains scripts for extracting and analyzing intrinsic electrophysiological properties of neurons.
 
----
+**Files:**
+- `EPhys_IV_features.py` → Computes current–voltage (I–V) relationships
+- `EPhys_FI_features.py` → Calculates firing rate vs current (F–I curves)
+- `EPhys_Ih_features.py` → Extracts Ih-related properties (sag, rebound)
+- `EPhys_RMP.py` → Computes resting membrane potential (RMP)
 
-## 📂 Repository Structure
-
-.
-├── scripts/
-│   └── Allen_smartseq_comparision.py
-├── data/
-│   ├── allen_smartseq_hippocampus.h5ad
-│   └── DESeq2_results_Type_A_vs_B.xlsx
-├── results/
-│   └── single_cell_mapping/
-├── README.md
-├── requirements.txt
+**Purpose:**
+To characterize intrinsic excitability and membrane properties of neuronal subtypes.
 
 ---
 
-## ⚙️ Requirements
+### 2. Transcriptome/
 
-Python 3.10+
+This folder contains scripts for transcriptomic analysis file, including integration with external datasets.
 
-Install dependencies:
+**Files:**
+- `Allen_smartseq_comparision.py` → Maps subtype-specific gene signatures onto the Allen Brain Smart-seq reference dataset
+- Associated README files explaining specific pipelines
 
+**Purpose:**
+To validate subtype identity using gene expression profiles and external single-cell datasets.
+
+---
+
+### 3. Behaviour/
+
+This folder contains analysis scripts related to behavioural experiments.
+
+**Files:**
+- `freezing_analysis.py` → Quantifies freezing behavior (e.g., fear conditioning)
+- `README.md` → Description of behavioral analysis pipeline
+
+**Purpose:**
+To link neuronal subtype differences with behavioral outcomes.
+
+---
+
+## Requirements
+
+- Python 3.10+
+- scanpy
+- pandas
+- matplotlib
+- openpyxl
+- efel
+
+Install using:
+```
 pip install scanpy pandas matplotlib openpyxl
+```
+
+## Notes
+
+- Ensure input data paths are correctly set inside each script
+- Large datasets (e.g., `.h5ad`) may not be included in the repository
+- Modify parameters within scripts as needed for reproducibility
 
 ---
 
-## 🚀 Usage
+## Authors
 
-Run the pipeline:
-
-python Allen_smartseq_comparision.py
+Dheeraj Songara, Hiyaa Ghosh
 
 ---
 
-## 🧠 Method Summary
-
-1. Preprocessing
-2. Signature Extraction
-3. Cell Classification
-4. Visualization
-
----
-
-## 📊 Outputs
-
-results/single_cell_mapping/
-
----
-
-## 📌 Reproducibility
-
-Key parameters:
-- TOP_N_GENES = 100  
-- SCORE_PERCENTILE = 0.8  
-- TARGET_SUM = 1e6  
-- MIN_CELLS_PER_GENE = 10  
-
----
-
-## 📁 Data Availability
-
-- Allen Brain Smart-seq dataset: [Add link]
-- Processed DEG results: Included / [Add link]
-
----
-
-## 📜 DOI (for publication)
-
-After creating a GitHub release, archive via Zenodo:
-https://zenodo.org
-
----
-
-## 👤 Author
-
-Dheeraj Songara  
-
----
-
-## 📄 License
-
-[Add license]
-
----
-
-## 🙏 Acknowledgements
-
-- Allen Institute for Brain Science  
-- Scanpy ecosystem  
