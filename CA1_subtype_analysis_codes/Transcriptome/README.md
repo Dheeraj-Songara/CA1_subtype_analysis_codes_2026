@@ -2,7 +2,7 @@
 
 This repository contains the computational pipeline used to project *in vivo* transcriptomic signatures of CA1 pyramidal neuron subpopulations (Type A and Type B) onto the independent Allen Brain Institute Smart-seq reference atlas. 
 
-"https://brain-map.org/our-research/cell-types-taxonomies/cell-types-database-rna-seq-data/mouse-whole-cortex-and-hippocampus-smart-seq"
+https://brain-map.org/our-research/cell-types-taxonomies/cell-types-database-rna-seq-data/mouse-whole-cortex-and-hippocampus-smart-seq
 
 This analysis accompanies the manuscript
 
